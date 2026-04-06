@@ -51,27 +51,6 @@ Ao clicar em qualquer produto, o sistema cria automaticamente uma mensagem pront
 - `+258 83 514 7466`
 
 ---
-
-## 🔐 Login Admin (Teste)
-
-⚠️ Para fins de teste (modo demo), o sistema já inclui um login fixo de administrador:
-
-- **ID:** `admin`
-- **Senha:** `moznow2026`
-
-> Recomenda-se alterar estas credenciais antes de usar em produção.
-
----
-
-## 🧠 Tecnologias Utilizadas
-
-- **HTML5**
-- **CSS3**
-- **JavaScript (Vanilla JS)**
-- Google Fonts (Fraunces + Plus Jakarta Sans)
-
----
-
-## 📂 Estrutura do Projeto
+to
 
 Este projeto foi desenvolvido em um único ficheiro:
