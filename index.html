@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MozNow — Marketplace de Moçambique</title>
+<title>MozMarket — Dropshipping em Moçambique</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{--g:#00C48C;--g2:#009e72;--gold:#FFB800;--red:#FF4545;--dk:#07100D;--dk2:#0D1A14;--dk3:#13231A;--panel:#172218;--bdr:rgba(0,196,140,.13);--gray:#6B7F77;--wh:#F0FAF5;--radius:14px;}
@@ -14,9 +14,11 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--dk);color:var(-
 .badge-green{background:rgba(0,196,140,.12);color:var(--g);}
 .badge-gold{background:rgba(255,184,0,.12);color:var(--gold);}
 .badge-red{background:rgba(255,69,69,.12);color:var(--red);}
+.badge-blue{background:rgba(50,130,255,.15);color:#0e5fb1;}
+.badge-purple{background:rgba(160,80,255,.15);color:#3b0472;}
 #toast{position:fixed;bottom:24px;right:24px;background:var(--dk2);border:1px solid var(--g);color:var(--g);border-radius:10px;padding:14px 22px;font-size:.88rem;font-weight:600;z-index:99999;transform:translateY(60px);opacity:0;transition:all .3s;pointer-events:none;max-width:320px;}
 #toast.show{transform:translateY(0);opacity:1;}#toast.err{border-color:var(--red);color:var(--red);}
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:9000;align-items:center;justify-content:center;backdrop-filter:blur(10px);padding:20px;}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(192, 5, 5, 0.88);z-index:9000;align-items:center;justify-content:center;backdrop-filter:blur(10px);padding:20px;}
 .modal-overlay.active{display:flex;}
 .modal{background:var(--dk2);border:1px solid var(--bdr);border-radius:20px;padding:36px 32px;width:500px;max-width:100%;max-height:90vh;overflow-y:auto;position:relative;animation:slideUp .3s ease;}
 .modal.wide{width:680px;}
@@ -48,8 +50,12 @@ body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--dk);color:var(-
 .btn-outline:hover{background:var(--g);color:var(--dk);}
 .btn-red{background:var(--red);color:#fff;}.btn-red:hover{background:#d63a3a;}
 .btn-gold{background:var(--gold);color:var(--dk);}
+.btn-blue{background:#2563eb;color:#fff;}.btn-blue:hover{background:#1d4ed8;}
+.btn-purple{background:#7c3aed;color:#fff;}.btn-purple:hover{background:#6d28d9;}
 .btn-sm{padding:6px 14px;font-size:.76rem;}
 .btn-full{width:100%;}
+
+/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:15px 4%;background:rgba(7,16,13,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--bdr);}
 .nav-logo{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:900;color:var(--wh);text-decoration:none;}
 .nav-logo em{color:var(--g);font-style:normal;}
@@ -60,15 +66,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .nav-right{display:flex;align-items:center;gap:8px;}
 .nav-user{display:flex;align-items:center;gap:8px;background:var(--dk2);border:1px solid var(--bdr);border-radius:8px;padding:6px 14px;font-size:.8rem;font-weight:600;cursor:pointer;}
 .nav-avatar{width:28px;height:28px;border-radius:50%;background:var(--g);display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:800;color:var(--dk);}
+.nav-avatar.ceo-av{background:var(--gold);}
+.nav-avatar.admin-av{background:#7c3aed;}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
 .hamburger span{width:22px;height:2px;background:var(--wh);border-radius:2px;}
+
+/* Paginas  */
 .page{display:none;min-height:100vh;padding-top:66px;}
 .page.active{display:block;}
-/* HERO */
-.hero{min-height:calc(100vh - 66px);display:flex;align-items:center;padding:50px 4%;position:relative;overflow:hidden;}
+
+/* HERO SLIDER */
+.hero{position:relative;overflow:hidden;min-height:calc(100vh - 66px);}
 .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 55% 70% at 70% 40%,rgba(0,196,140,.09) 0%,transparent 65%),radial-gradient(ellipse 40% 50% at 15% 70%,rgba(255,184,0,.05) 0%,transparent 55%),var(--dk);}
 .hero-bg::after{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,196,140,.05) 1px,transparent 1px);background-size:38px 38px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 20%,transparent 100%);}
-.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;width:100%;}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;width:100%;padding:50px 4%;}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,196,140,.08);border:1px solid rgba(0,196,140,.25);border-radius:100px;padding:6px 16px;font-size:.7rem;font-weight:700;color:var(--g);margin-bottom:22px;letter-spacing:1.5px;text-transform:uppercase;}
 .hero-badge::before{content:'';width:7px;height:7px;background:var(--g);border-radius:50%;animation:blink 2s infinite;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
@@ -87,6 +98,30 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .hstat-val{font-family:'Fraunces',serif;font-size:1.7rem;font-weight:900;margin-top:3px;}
 .hstat-val span{font-size:.75rem;color:var(--g);font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;}
 .hstat-sub{font-size:.7rem;color:var(--g);margin-top:2px;font-weight:600;}
+
+/* PRODUCT PROMO SLIDER */
+.promo-slider-section{padding:0 4% 60px;position:relative;z-index:2;}
+.promo-slider-label{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+.promo-slider-label span{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:3px;color:var(--g);}
+.promo-slider-label::after{content:'';flex:1;height:1px;background:var(--bdr);}
+.slider-track-wrap{overflow:hidden;border-radius:14px;position:relative;}
+.slider-track{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1);}
+.slide{min-width:100%;position:relative;height:320px;border-radius:14px;overflow:hidden;cursor:pointer;}
+.slide-img{width:100%;height:100%;object-fit:cover;}
+.slide-emoji-bg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:7rem;}
+.slide-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(7,16,13,.92) 40%,rgba(7,16,13,.2));}
+.slide-content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:36px;}
+.slide-tag{font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:var(--g);margin-bottom:8px;}
+.slide-title{font-family:'Fraunces',serif;font-size:clamp(1.3rem,3vw,2rem);font-weight:900;line-height:1.2;margin-bottom:10px;}
+.slide-price{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:900;color:var(--gold);margin-bottom:16px;}
+.slide-seller{font-size:.76rem;color:rgba(240,250,245,.6);margin-bottom:14px;}
+.slider-dots{display:flex;justify-content:center;gap:7px;margin-top:14px;}
+.sdot{width:7px;height:7px;border-radius:50%;background:var(--bdr);border:none;cursor:pointer;transition:all .2s;padding:0;}
+.sdot.act{background:var(--g);width:20px;border-radius:4px;}
+.slider-arrows{position:absolute;top:50%;transform:translateY(-50%);width:100%;display:flex;justify-content:space-between;padding:0 12px;pointer-events:none;z-index:5;}
+.sarrow{background:rgba(13,26,20,.8);border:1px solid var(--bdr);color:var(--wh);border-radius:50%;width:38px;height:38px;display:flex;align-items:center;justify-content:center;cursor:pointer;pointer-events:all;transition:all .2s;font-size:1rem;}
+.sarrow:hover{background:var(--g);color:var(--dk);border-color:var(--g);}
+
 /* CATS */
 .cats{padding:56px 4%;background:var(--dk2);}
 .sec-tag{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:3px;color:var(--g);margin-bottom:8px;}
@@ -98,6 +133,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .cat-card .cat-icon{font-size:1.8rem;margin-bottom:7px;}
 .cat-card span{font-size:.77rem;font-weight:700;color:var(--gray);}
 .cat-card:hover span,.cat-card.act span{color:var(--wh);}
+
 /* LISTING */
 .listing{padding:56px 4%;background:var(--dk);}
 .listing-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:32px;}
@@ -128,6 +164,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .prod-price small{font-size:.63rem;color:var(--gray);font-family:'Plus Jakarta Sans',sans-serif;font-weight:500;display:block;}
 .btn-wa{background:var(--g);border:none;color:var(--dk);border-radius:8px;padding:8px 13px;font-family:'Plus Jakarta Sans',sans-serif;font-size:.76rem;font-weight:800;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:4px;white-space:nowrap;}
 .btn-wa:hover{background:var(--g2);}
+
 /* HOW */
 .how{padding:66px 4%;background:var(--dk2);}
 .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px;margin-top:36px;}
@@ -136,6 +173,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .step-icon{font-size:1.9rem;margin-bottom:12px;}
 .step h3{font-family:'Fraunces',serif;font-size:.97rem;font-weight:700;margin-bottom:7px;}
 .step p{font-size:.81rem;color:var(--gray);line-height:1.6;}
+
 /* PRODUCT DETAIL */
 .pd-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
 .pd-imgs{border-radius:12px;overflow:hidden;height:270px;background:var(--dk3);display:flex;align-items:center;justify-content:center;}
@@ -148,11 +186,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .pd-seller-box h4{font-size:.74rem;color:var(--gray);text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:9px;}
 .pd-s-row{display:flex;align-items:center;gap:10px;}
 .pd-s-av{width:38px;height:38px;border-radius:50%;background:var(--g);display:flex;align-items:center;justify-content:center;font-weight:900;color:var(--dk);}
+
 /* STATUS BANNER */
 .sbanner{border-radius:10px;padding:13px 17px;margin-bottom:18px;font-size:.83rem;display:flex;align-items:center;gap:10px;}
 .sbanner-pend{background:rgba(255,184,0,.08);border:1px solid rgba(255,184,0,.25);color:var(--gold);}
 .sbanner-ok{background:rgba(0,196,140,.08);border:1px solid rgba(0,196,140,.25);color:var(--g);}
 .sbanner-no{background:rgba(255,69,69,.08);border:1px solid rgba(255,69,69,.25);color:var(--red);}
+
 /* DASHBOARD */
 .dashboard{padding:30px 4%;}
 .dash-h{margin-bottom:28px;}
@@ -172,13 +212,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .my-card .mc-info h4{font-size:.85rem;font-weight:700;margin-bottom:3px;}
 .my-card .mc-info p{font-size:.76rem;color:var(--gray);}
 .my-card .mc-acts{padding:8px 11px;border-top:1px solid rgba(255,255,255,.04);display:flex;gap:6px;}
+
 /* ADMIN */
 .admin-wrap{padding:26px 4%;}
-.admin-grid{display:grid;grid-template-columns:210px 1fr;gap:18px;align-items:start;}
+.admin-grid{display:grid;grid-template-columns:230px 1fr;gap:18px;align-items:start;}
 .admin-sidebar{background:var(--dk2);border:1px solid var(--bdr);border-radius:14px;padding:14px;position:sticky;top:84px;}
+.admin-sidebar .sidebar-role{display:flex;align-items:center;gap:8px;padding:10px;background:var(--dk3);border-radius:8px;margin-bottom:12px;}
+.sidebar-role .role-av{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.85rem;color:var(--dk);flex-shrink:0;}
+.sidebar-role .role-nm{font-size:.8rem;font-weight:700;}
+.sidebar-role .role-lbl{font-size:.65rem;color:var(--gray);}
 .admin-sidebar h3{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:var(--gray);margin-bottom:10px;padding:0 7px;}
 .aside-btn{width:100%;background:transparent;border:none;color:var(--gray);font-family:'Plus Jakarta Sans',sans-serif;font-size:.83rem;font-weight:600;padding:9px 11px;border-radius:8px;cursor:pointer;transition:all .2s;text-align:left;display:flex;align-items:center;gap:7px;margin-bottom:3px;}
 .aside-btn:hover,.aside-btn.act{background:rgba(0,196,140,.1);color:var(--g);}
+.aside-btn.ceo-only{display:none;}
 .admin-sec{display:none;}.admin-sec.active{display:block;}
 .admin-sec h2{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:900;margin-bottom:18px;}
 .astats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:11px;margin-bottom:22px;}
@@ -204,10 +250,24 @@ tr:hover td{background:rgba(255,255,255,.02);}
 .pcard-bi{margin-bottom:12px;}
 .pcard-bi img{width:100%;border-radius:8px;max-height:130px;object-fit:cover;border:1px solid var(--bdr);}
 .pcard-bi p{font-size:.73rem;color:var(--gray);margin-top:4px;}
-.pcard-acts{display:flex;gap:7px;}
+.pcard-acts{display:flex;gap:7px;flex-wrap:wrap;}
 .srow-info{display:flex;align-items:center;gap:9px;}
 .srow-av{width:34px;height:34px;border-radius:50%;background:var(--g);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.87rem;color:var(--dk);flex-shrink:0;overflow:hidden;}
 .srow-av img{width:100%;height:100%;object-fit:cover;}
+
+/* CEO ADMIN MANAGEMENT */
+.admin-card{background:var(--dk2);border:1px solid var(--bdr);border-radius:14px;padding:22px;margin-bottom:14px;}
+.admin-card h4{font-family:'Fraunces',serif;font-size:1rem;font-weight:700;margin-bottom:14px;}
+.admin-row{display:flex;align-items:center;gap:12px;padding:12px;background:var(--dk3);border-radius:10px;margin-bottom:8px;}
+.admin-row-av{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1rem;flex-shrink:0;}
+.admin-row-info{flex:1;}
+.admin-row-info h5{font-size:.88rem;font-weight:700;}
+.admin-row-info p{font-size:.73rem;color:var(--gray);}
+.role-badge{padding:3px 10px;border-radius:20px;font-size:.67rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;}
+.role-ceo{background:rgba(17, 106, 207, 0.15);color:var(--gold);}
+.role-admin{background:rgba(124,58,237,.15);color:#a78bfa;}
+.role-seller{background:rgba(0,196,140,.12);color:var(--g);}
+
 /* FOOTER */
 footer{background:var(--dk2);border-top:1px solid var(--bdr);padding:44px 4% 22px;}
 .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:26px;margin-bottom:28px;}
@@ -232,15 +292,15 @@ footer p.desc{color:var(--gray);font-size:.8rem;line-height:1.7;max-width:255px;
 <div class="modal-overlay" id="modal-auth">
   <div class="modal">
     <button class="modal-close" onclick="closeModal('modal-auth')">×</button>
-    <h2>Entrar na MozNow</h2>
-    <p class="m-sub">Acede à tua conta de cliente ou vendedor</p>
+    <h2 id="auth-modal-title">Entrar na MozMarket</h2>
+    <p class="m-sub">Acede à tua conta de cliente, vendedor ou equipa</p>
     <div class="mtabs" id="auth-tabs">
       <button class="mtab active" onclick="setAuthMode('login')">Entrar</button>
       <button class="mtab" onclick="setAuthMode('register')">Registar</button>
     </div>
     <div id="auth-login">
-      <div class="fgroup"><label>Telemóvel ou Email</label><input type="text" id="li-id" placeholder="+258 84 000 0000 ou email@exemplo.com"></div>
-      <div class="fgroup"><label>Senha / Código </label><input type="password" id="li-pass" placeholder="A tua senha"></div>
+      <div class="fgroup"><label>Telemóvel, Email ou Nome de utilizador</label><input type="text" id="li-id" placeholder="+258 84 000 0000 ou email@exemplo.com"></div>
+      <div class="fgroup"><label>Senha</label><input type="password" id="li-pass" placeholder="A tua senha"></div>
       <button class="btn btn-primary btn-full" style="margin-top:6px" onclick="doLogin()">Entrar</button>
       <p style="text-align:center;margin-top:12px;font-size:.8rem;color:var(--gray)">Sem conta? <a href="#" style="color:var(--g);font-weight:700" onclick="setAuthMode('register');return false">Registar agora</a></p>
     </div>
@@ -262,7 +322,7 @@ footer p.desc{color:var(--gray);font-size:.8rem;line-height:1.7;max-width:255px;
         </div>
         <div class="fg2">
           <div class="fgroup"><label>Nº M-Pesa / e-Mola</label><input type="tel" id="rs-phone" placeholder="+258 84 000 0000"></div>
-          <div class="fgroup"><label>Cidade / Residência</label><input type="text" id="rs-city" placeholder="Ex: Beira, Sofala"></div>
+          <div class="fgroup"><label>Cidade / Residência</label><input type="text" id="rs-city" placeholder="Ex: Maputo"></div>
         </div>
         <div class="fgroup"><label>Senha</label><input type="password" id="rs-pass" placeholder="Cria uma senha"></div>
         <div class="fgroup"><label>Foto do BI (frente) — obrigatório</label>
@@ -272,7 +332,7 @@ footer p.desc{color:var(--gray);font-size:.8rem;line-height:1.7;max-width:255px;
             <p class="ub-name" id="bi-nm"></p>
           </div>
           <img id="prev-bi" class="prev-img">
-          <p class="hint">📌 Necessário para verificação da conta de vendedor pelo administrador</p>
+          <p class="hint">📌 Necessário para verificação da conta pelo administrador</p>
         </div>
         <button class="btn btn-primary btn-full" style="margin-top:6px" onclick="registerSeller()">Submeter Pedido de Vendedor</button>
       </div>
@@ -311,7 +371,7 @@ footer p.desc{color:var(--gray);font-size:.8rem;line-height:1.7;max-width:255px;
         </select>
       </div>
     </div>
-    <div class="fgroup"><label>Local / Disponibilidade de Entrega</label><input type="text" id="ap-loc" placeholder="Ex: Beira, Sofala — entrega na cidade e envio nacional"></div>
+    <div class="fgroup"><label>Local / Disponibilidade de Entrega</label><input type="text" id="ap-loc" placeholder="Ex: Maputo — entrega na cidade e envio nacional"></div>
     <div class="fgroup"><label>Descrição Completa</label><textarea id="ap-desc" rows="4" placeholder="Estado, características, condições de venda, prazo de entrega..."></textarea></div>
     <div class="fgroup"><label>Fotos do Produto (até 3 fotos)</label>
       <div class="upload-box">
@@ -333,9 +393,34 @@ footer p.desc{color:var(--gray);font-size:.8rem;line-height:1.7;max-width:255px;
   </div>
 </div>
 
+<!-- PROMOTE SELLER MODAL (CEO only) -->
+<div class="modal-overlay" id="modal-promote">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-promote')">×</button>
+    <h2>⬆️ Promover Vendedor</h2>
+    <p class="m-sub">Selecciona o vendedor a promover a Administrador</p>
+    <div id="promote-list" style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px;max-height:320px;overflow-y:auto;"></div>
+    <button class="btn btn-outline btn-full" onclick="closeModal('modal-promote')">Fechar</button>
+  </div>
+</div>
+
+<!-- ADD ADMIN MODAL (CEO only) -->
+<div class="modal-overlay" id="modal-addadmin">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-addadmin')">×</button>
+    <h2>👤 Adicionar Novo Administrador</h2>
+    <p class="m-sub">Cria uma conta de administrador directamente</p>
+    <div class="fgroup"><label>Nome Completo</label><input type="text" id="na-name" placeholder="Nome do administrador"></div>
+    <div class="fgroup"><label>Email</label><input type="email" id="na-email" placeholder="email@mozmarket.mz"></div>
+    <div class="fgroup"><label>Telemóvel</label><input type="tel" id="na-phone" placeholder="+258 84 000 0000"></div>
+    <div class="fgroup"><label>Senha de Acesso</label><input type="password" id="na-pass" placeholder="Senha para o novo admin"></div>
+    <button class="btn btn-primary btn-full" style="margin-top:6px" onclick="addNewAdmin()">Criar Administrador</button>
+  </div>
+</div>
+
 <!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#" onclick="showPage('home');return false">Moz<em>Now</em><sup>MZ</sup></a>
+  <a class="nav-logo" href="#" onclick="showPage('home');return false">Moz<em>Market</em><sup>MZ</sup></a>
   <ul class="nav-links">
     <li><a href="#" onclick="showPage('home');return false">Início</a></li>
     <li><a href="#" onclick="showPage('home');setTimeout(()=>scrollTo('section-cats'),100);return false">Categorias</a></li>
@@ -356,8 +441,8 @@ footer p.desc{color:var(--gray);font-size:.8rem;line-height:1.7;max-width:255px;
     <div class="hero-inner">
       <div>
         <div class="hero-badge">🇲🇿 O Marketplace de Moçambique</div>
-        <h1>Compra, <span class="acc">Vende</span><br>e <span class="ghost">Cresce</span><br>com a MozNow</h1>
-        <p>Produtos físicos e digitais, vendedores verificados, pagamento via M-Pesa e e-Mola. Baseado na Beira — para todo Moçambique.</p>
+        <h1>Compra, <span class="acc">Vende</span><br>e <span class="ghost">Cresce</span><br>com a MozMarket</h1>
+        <p>Produtos físicos e digitais, vendedores verificados, pagamento via M-Pesa e e-Mola. Para todo Moçambique.</p>
         <div class="hero-actions">
           <button class="btn btn-primary" onclick="scrollTo('section-listing')">🛍️ Ver Produtos</button>
           <button class="btn btn-outline" onclick="openModal('modal-auth');setAuthMode('register');setRegType('seller')">🏪 Tornar-me Vendedor</button>
@@ -367,9 +452,24 @@ footer p.desc{color:var(--gray);font-size:.8rem;line-height:1.7;max-width:255px;
         <div class="hstat"><div class="hstat-label">Vendedores Verificados</div><div class="hstat-val" id="hs-s">0 <span>activos</span></div><div class="hstat-sub">↑ Crescendo</div></div>
         <div class="hstat"><div class="hstat-label">Produtos Listados</div><div class="hstat-val" id="hs-p">0 <span>produtos</span></div><div class="hstat-sub">↑ Actualizados</div></div>
         <div class="hstat"><div class="hstat-label">Províncias</div><div class="hstat-val">11 <span>regiões</span></div><div class="hstat-sub">↑ Nacional</div></div>
-        <div class="hstat"><div class="hstat-label">Sede</div><div class="hstat-val" style="font-size:.95rem;padding-top:4px">📍 Beira<br><span>Sofala, Moçambique</span></div></div>
+        <div class="hstat"><div class="hstat-label">CEO</div><div class="hstat-val" style="font-size:.88rem;padding-top:4px">👑 Karde<br><span>Andrade</span></div></div>
       </div>
     </div>
+  </section>
+
+  <!-- PROMO SLIDER -->
+  <section class="promo-slider-section" id="section-slider">
+    <div class="promo-slider-label"><span>✨ Produtos em Destaque</span></div>
+    <div style="position:relative;">
+      <div class="slider-track-wrap">
+        <div class="slider-track" id="slider-track"></div>
+      </div>
+      <div class="slider-arrows">
+        <button class="sarrow" onclick="slidePrev()">&#8592;</button>
+        <button class="sarrow" onclick="slideNext()">&#8594;</button>
+      </div>
+    </div>
+    <div class="slider-dots" id="slider-dots"></div>
   </section>
 
   <section class="cats" id="section-cats">
@@ -411,37 +511,37 @@ footer p.desc{color:var(--gray);font-size:.8rem;line-height:1.7;max-width:255px;
       <div class="step" data-n="1"><div class="step-icon">📝</div><h3>Regista-te</h3><p>Cliente: só nome e telemóvel. Vendedor: preenche os dados e faz upload do BI para verificação.</p></div>
       <div class="step" data-n="2"><div class="step-icon">✅</div><h3>Verificação (Vendedores)</h3><p>O administrador analisa o teu BI e dados. Após aprovação, já podes publicar produtos.</p></div>
       <div class="step" data-n="3"><div class="step-icon">🛍️</div><h3>Compra ou Vende</h3><p>Vendedores publicam com fotos, preço e local. Clientes navegam e encontram o que precisam.</p></div>
-      <div class="step" data-n="4"><div class="step-icon">💬</div><h3>WhatsApp + Venda Segura</h3><p>Ao clicar em qualquer produto és encaminhado para o WhatsApp da MozNow. Tratamos de tudo.</p></div>
+      <div class="step" data-n="4"><div class="step-icon">💬</div><h3>WhatsApp + Venda Segura</h3><p>Ao clicar em qualquer produto és encaminhado para o WhatsApp da MozMarket. Tratamos de tudo.</p></div>
     </div>
   </section>
 
   <footer>
     <div class="foot-grid">
-      <div><div class="f-logo">Moz<em>Now</em></div><p class="desc">Marketplace moçambicano para produtos físicos e digitais. Vendedores verificados, sede na Beira.</p></div>
+      <div><div class="f-logo">Moz<em>Market</em></div><p class="desc">Marketplace moçambicano para dropshipping — produtos físicos e digitais. Vendedores verificados em todo Moçambique.</p></div>
       <div class="fc"><h4>Mercado</h4><ul><li><a href="#">Tecnologia</a></li><li><a href="#">Moda</a></li><li><a href="#">Casa & Lar</a></li><li><a href="#">Digital</a></li></ul></div>
       <div class="fc"><h4>Empresa</h4><ul><li><a href="#">Sobre Nós</a></li><li><a href="#">Ser Vendedor</a></li><li><a href="#">Termos</a></li><li><a href="#">Privacidade</a></li></ul></div>
       <div class="fc"><h4>Contacto</h4><ul>
-        <li><a href="#">📍 Beira, Sofala</a></li>
+        <li><a href="#">📍Beira-cidade , Moçambique</a></li>
         <li><a href="https://wa.me/258835147466" target="_blank">💬 +258 83 514 7466</a></li>
-        <li><a href="#">📧 geral@moznow.co.mz</a></li>
+        <li><a href="#">📧 geral@mozmarket.co.mz</a></li>
         <li><a href="#">💚 M-Pesa · e-Mola</a></li>
       </ul></div>
     </div>
-    <div class="foot-bottom"><p>© 2026 MozNow. Todos os direitos reservados.</p><p>🇲🇿 Feito com 💚 na Beira, Moçambique</p></div>
+    <div class="foot-bottom"><p>© 2026 MozMarket. Todos os direitos reservados.</p><p>🇲🇿 Feito com 💚 em Moçambique — CEO: Karde Andrade</p></div>
   </footer>
 </div>
 
 <!-- SELLER PAGE -->
 <div class="page" id="page-seller">
   <div class="dashboard">
-    <div class="dash-h"><h2>Olá, <span id="dash-nm">Vendedor</span> 👋</h2><p style="color:var(--gray);font-size:.86rem">Painel do Vendedor — MozNow</p></div>
+    <div class="dash-h"><h2>Olá, <span id="dash-nm">Vendedor</span> 👋</h2><p style="color:var(--gray);font-size:.86rem">Painel do Vendedor — MozMarket</p></div>
     <div id="sb-pend" class="sbanner sbanner-pend hidden">⏳ A tua conta está <strong>em análise</strong>. O administrador verificará os teus dados em breve.</div>
     <div id="sb-ok" class="sbanner sbanner-ok hidden">✅ Conta <strong>aprovada</strong>! Já podes publicar produtos.</div>
     <div id="sb-no" class="sbanner sbanner-no hidden">❌ Pedido <strong>rejeitado</strong>. Contacta-nos via WhatsApp para mais informações.</div>
     <div class="dstats">
       <div class="dstat"><div class="dstat-l">Meus Produtos</div><div class="dstat-v" id="my-pc">0</div></div>
       <div class="dstat"><div class="dstat-l">Estado da Conta</div><div class="dstat-v" id="my-st" style="font-size:1rem;padding-top:6px">—</div></div>
-      <div class="dstat"><div class="dstat-l">WhatsApp Empresa</div><div class="dstat-v" style="font-size:.9rem;padding-top:6px"><a href="https://wa.me/258835147466" target="_blank" style="color:var(--g)">💬 Contactar</a></div></div>
+      <div class="dstat"><div class="dstat-l">WhatsApp MozMarket</div><div class="dstat-v" style="font-size:.9rem;padding-top:6px"><a href="https://wa.me/258835147466" target="_blank" style="color:var(--g)">💬 Contactar</a></div></div>
     </div>
     <div class="dsec">
       <h3>Os Meus Produtos <button class="btn btn-primary btn-sm" id="btn-pubprod" onclick="openModal('modal-addprod')" style="display:none">+ Publicar</button></h3>
@@ -453,7 +553,7 @@ footer p.desc{color:var(--gray);font-size:.8rem;line-height:1.7;max-width:255px;
 <!-- CLIENT PAGE -->
 <div class="page" id="page-client">
   <div class="dashboard">
-    <div class="dash-h"><h2>Olá, <span id="cli-nm">Cliente</span> 👋</h2><p style="color:var(--gray);font-size:.86rem">Bem-vindo à MozNow</p></div>
+    <div class="dash-h"><h2>Olá, <span id="cli-nm">Cliente</span> 👋</h2><p style="color:var(--gray);font-size:.86rem">Bem-vindo à MozMarket</p></div>
     <div style="text-align:center;padding:60px 20px;">
       <div style="font-size:4rem;margin-bottom:14px">🛍️</div>
       <h3 style="font-family:'Fraunces',serif;font-size:1.3rem;margin-bottom:9px">Explora o Mercado!</h3>
@@ -468,17 +568,27 @@ footer p.desc{color:var(--gray);font-size:.8rem;line-height:1.7;max-width:255px;
   <div class="admin-wrap">
     <div class="admin-grid">
       <div class="admin-sidebar">
-        <h3>Admin Panel</h3>
+        <div class="sidebar-role" id="sidebar-role-info">
+          <div class="role-av" id="sidebar-av" style="background:var(--gold)">KA</div>
+          <div>
+            <div class="role-nm" id="sidebar-nm">—</div>
+            <div class="role-lbl" id="sidebar-role-lbl">—</div>
+          </div>
+        </div>
+        <h3>Painel</h3>
         <button class="aside-btn act" onclick="switchAdmin('dashboard',this)">📊 Dashboard</button>
-        <button class="aside-btn" onclick="switchAdmin('pending',this)">⏳ Pendentes <span id="pend-badge" style="background:var(--red);color:#fff;border-radius:20px;padding:1px 7px;font-size:.68rem;margin-left:2px">0</span></button>
+        <button class="aside-btn" onclick="switchAdmin('pending',this)">⏳ Pendentes <span id="pend-badge" style="background:var(--red);color:#fff;border-radius:20px;padding:1px 7px;font-size:.68rem;margin-left:2px;display:none">0</span></button>
         <button class="aside-btn" onclick="switchAdmin('sellers',this)">🏪 Vendedores</button>
         <button class="aside-btn" onclick="switchAdmin('products',this)">📦 Produtos</button>
         <button class="aside-btn" onclick="switchAdmin('clients',this)">👤 Clientes</button>
+        <button class="aside-btn ceo-only" id="btn-admins-menu" onclick="switchAdmin('admins',this)">🔑 Gestão de Admins</button>
         <hr style="border-color:rgba(255,255,255,.06);margin:12px 0">
+        <button class="aside-btn" onclick="switchAdmin('activity',this)">📋 Actividade</button>
         <button class="aside-btn" onclick="showPage('home')">🌐 Ver Site</button>
         <button class="aside-btn" onclick="logoutUser()" style="color:var(--red)">🚪 Sair</button>
       </div>
       <div>
+        <!-- DASHBOARD -->
         <div class="admin-sec active" id="asec-dashboard">
           <h2>📊 Dashboard</h2>
           <div class="astats">
@@ -487,26 +597,69 @@ footer p.desc{color:var(--gray);font-size:.8rem;line-height:1.7;max-width:255px;
             <div class="astat"><div class="astat-l">Pendentes</div><div class="astat-v" id="as-pend">0</div></div>
             <div class="astat"><div class="astat-l">Produtos Activos</div><div class="astat-v" id="as-prod">0</div></div>
           </div>
+          <!-- Quick actions for CEO -->
+          <div id="ceo-quick" class="hidden" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;">
+            <button class="btn btn-gold btn-sm" onclick="openPromoteModal()">⬆️ Promover Vendedor a Admin</button>
+            <button class="btn btn-purple btn-sm" onclick="openModal('modal-addadmin')">➕ Adicionar Administrador</button>
+          </div>
           <div style="background:var(--dk2);border:1px solid var(--bdr);border-radius:12px;padding:18px;">
             <h3 style="font-family:'Fraunces',serif;font-size:1rem;font-weight:700;margin-bottom:14px">Actividade Recente</h3>
-            <div id="activity-log"><p style="color:var(--gray);font-size:.83rem">Sem actividade.</p></div>
+            <div id="activity-log-dash"><p style="color:var(--gray);font-size:.83rem">Sem actividade.</p></div>
           </div>
         </div>
+
+        <!-- PENDING -->
         <div class="admin-sec" id="asec-pending">
           <h2>⏳ Pedidos de Vendedor Pendentes</h2>
           <div class="pending-grid" id="pending-grid"><p style="color:var(--gray);font-size:.84rem">Nenhum pedido pendente.</p></div>
         </div>
+
+        <!-- SELLERS -->
         <div class="admin-sec" id="asec-sellers">
           <h2>🏪 Vendedores Aprovados</h2>
-          <div class="tw"><table><thead><tr><th>Vendedor</th><th>Email</th><th>Telemóvel</th><th>Cidade</th><th>Produtos</th><th>Acções</th></tr></thead><tbody id="sellers-tb"><tr><td colspan="6" style="color:var(--gray);text-align:center;padding:22px">Nenhum vendedor aprovado.</td></tr></tbody></table></div>
+          <div class="tw"><table><thead><tr><th>Vendedor</th><th>Email</th><th>Telemóvel</th><th>Cidade</th><th>Produtos</th><th>Acções</th></tr></thead><tbody id="sellers-tb"></tbody></table></div>
         </div>
+
+        <!-- PRODUCTS -->
         <div class="admin-sec" id="asec-products">
           <h2>📦 Todos os Produtos</h2>
-          <div class="tw"><table><thead><tr><th>Produto</th><th>Vendedor</th><th>Categoria</th><th>Tipo</th><th>Preço</th><th>Local</th><th>Acção</th></tr></thead><tbody id="products-tb"><tr><td colspan="7" style="color:var(--gray);text-align:center;padding:22px">Nenhum produto.</td></tr></tbody></table></div>
+          <div class="tw"><table><thead><tr><th>Produto</th><th>Vendedor</th><th>Categoria</th><th>Tipo</th><th>Preço</th><th>Local</th><th>Acção</th></tr></thead><tbody id="products-tb"></tbody></table></div>
         </div>
+
+        <!-- CLIENTS -->
         <div class="admin-sec" id="asec-clients">
           <h2>👤 Clientes Registados</h2>
-          <div class="tw"><table><thead><tr><th>Nome</th><th>Telemóvel</th><th>Data Registo</th></tr></thead><tbody id="clients-tb"><tr><td colspan="3" style="color:var(--gray);text-align:center;padding:22px">Nenhum cliente.</td></tr></tbody></table></div>
+          <div class="tw"><table><thead><tr><th>Nome</th><th>Telemóvel</th><th>Data Registo</th></tr></thead><tbody id="clients-tb"></tbody></table></div>
+        </div>
+
+        <!-- ADMINS (CEO only) -->
+        <div class="admin-sec" id="asec-admins">
+          <h2>🔑 Gestão de Administradores <span id="ceo-badge" class="role-badge role-ceo" style="font-size:.7rem">CEO</span></h2>
+          <p style="color:var(--gray);font-size:.84rem;margin-bottom:18px">Gere os administradores, promove vendedores e remove acessos.</p>
+          <div style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap;">
+            <button class="btn btn-gold btn-sm" onclick="openPromoteModal()">⬆️ Promover Vendedor a Admin</button>
+            <button class="btn btn-purple btn-sm" onclick="openModal('modal-addadmin')">➕ Novo Administrador</button>
+          </div>
+          <div class="admin-card">
+            <h4>👑 CEO do Site</h4>
+            <div class="admin-row">
+              <div class="admin-row-av" style="background:var(--gold);color:var(--dk)">KA</div>
+              <div class="admin-row-info"><h5>Karde Andrade</h5><p>CEO & Fundador · Acesso total ao sistema</p></div>
+              <span class="role-badge role-ceo">CEO</span>
+            </div>
+          </div>
+          <div class="admin-card">
+            <h4>🔑 Administradores</h4>
+            <div id="admins-list"></div>
+          </div>
+        </div>
+
+        <!-- ACTIVITY LOG -->
+        <div class="admin-sec" id="asec-activity">
+          <h2>📋 Log de Actividade</h2>
+          <div style="background:var(--dk2);border:1px solid var(--bdr);border-radius:12px;padding:18px;">
+            <div id="activity-log-full"><p style="color:var(--gray);font-size:.83rem">Sem actividade.</p></div>
+          </div>
         </div>
       </div>
     </div>
@@ -515,43 +668,147 @@ footer p.desc{color:var(--gray);font-size:.8rem;line-height:1.7;max-width:255px;
 
 <script>
 const WA='258835147466';
-const ADMIN_ID='admin', ADMIN_PASS='moznow2026';
+
+// ============================================================
+// CREDENCIAIS FIXAS
+// ============================================================
+const ACCOUNTS = {
+  ceo: {
+    id:'karde.andrade', pass:'mozmarket@CEO2026',
+    name:'Karde Andrade', role:'ceo', email:'karde@mozmarket.co.mz'
+  },
+  admins: [
+    {id:'antonio.mare', pass:'Admin@Mare2026', name:'Antonio Fernando Mare', role:'admin', email:'antonio@mozmarket.co.mz'},
+    {id:'joaquim.augusto', pass:'Admin@Joaquim2026', name:'Joaquim Augusto', role:'admin', email:'joaquim@mozmarket.co.mz'},
+    {id:'gregorio.andrade', pass:'Admin@greg2026', name:'Gregorio Andrade', role:'admin', email:'gregorioandrade@gmai.com'},
+    {id:'octavio.andrade',pass: 'Admin@ocatvio2026', name:'Octavio Andrade', role:'admin',email: 'octaviochuanga@gamil.com'},
+  ]
+};
+
 let S={
   user:null,
   cat:'Todos',
   clients:[],
-  sellers:[{id:'s0',name:'Carlos Nhambiu',email:'carlos@moznow.mz',phone:'+258841234567',city:'Beira, Sofala',biData:null,biName:'bi_carlos.jpg',status:'approved',pass:'1234',date:'01/04/2026'}],
+  sellers:[
+    {id:'s0',name:'karden Andrade',email:'karden@mozmarket.mz',phone:'+258841234567',city:'Beira-Mozambique',biData:null,biName:'bi.jpg',status:'approved',pass:'1234',date:'01/04/2026'},
+  ],
   products:[
-    {id:'p1',sid:'s0',sname:'Carlos Nhambiu',name:'Samsung Galaxy A15 128GB',price:12000,cat:'Tecnologia',type:'Físico',loc:'Beira, Sofala',desc:'Telemóvel em perfeito estado com 6 meses de uso. Caixa e carregador originais incluídos.',photos:[],em:'📱',date:'02/04/2026'},
-    {id:'p2',sid:'s0',sname:'Carlos Nhambiu',name:'Capulana Tradicional Moderna',price:850,cat:'Moda',type:'Físico',loc:'Beira, Sofala',desc:'Tecido moçambicano de alta qualidade. Vários padrões disponíveis. Aceito encomendas.',photos:[],em:'🧣',date:'03/04/2026'},
-    {id:'p3',sid:'s0',sname:'Carlos Nhambiu',name:'Design de Logótipo Profissional',price:2500,cat:'Digital',type:'Digital',loc:'Online — envio por email',desc:'Criação de logótipo profissional com 3 propostas. Entrega em 3 dias úteis. Ficheiros PNG e SVG.',photos:[],em:'🎨',date:'04/04/2026'},
+    {id:'p1',sid:'s0',sname:'Karde Andrade',name:'Samsung Galaxy A15 128GB',price:12000,cat:'Tecnologia',type:'Físico',loc:'Maputo',desc:'Telemóvel em perfeito estado com 6 meses de uso. Caixa e carregador originais incluídos.',photos:[],em:'📱',date:'02/04/2026'},
+    {id:'p2',sid:'s0',sname:'Antonio Fernando Mare',name:'Capulana Tradicional Moderna',price:850,cat:'Moda',type:'Físico',loc:'Maputo, Sofala',desc:'Tecido moçambicano de alta qualidade. Vários padrões disponíveis.',photos:[],em:'🧣',date:'03/04/2026'},
+    {id:'p3',sid:'s0',sname:'Joaquim Augusto',name:'Design de Logótipo Profissional',price:2500,cat:'Digital',type:'Digital',loc:'Online — envio por email',desc:'Criação de logótipo profissional com 3 propostas. Entrega em 3 dias úteis.',photos:[],em:'🎨',date:'04/04/2026'},
+    {id:'p4',sid:'s0',sname:'Karden Andrade',name:'iPhone 14 Pro Max 256GB',price:68000,cat:'Tecnologia',type:'Físico',loc:'Maputo',desc:'iPhone importado directo. Estado impecável. Garantia incluída.',photos:[],em:'📱',date:'05/04/2026'},
+    {id:'p5',sid:'s0',sname:'Karden Andrade',name:'Ar Condicionado 12000 BTU',price:32000,cat:'Casa',type:'Físico',loc:'Maputo e Beira',desc:'Ar condicionado split novo. Instalação disponível na cidade.',photos:[],em:'❄️',date:'06/04/2026'},
   ],
   activity:[],
+  extraAdmins:[],
 };
 
-function toast(m,err=false){const t=document.getElementById('toast');t.textContent=m;t.className='toast show'+(err?' err':'');setTimeout(()=>t.className='toast',3200);}
+// ============================================================
+// SLIDER DE PRODUTOS
+// ============================================================
+let sliderIdx=0, sliderTimer=null;
+
+function buildSlider(){
+  const track=document.getElementById('slider-track');
+  const dots=document.getElementById('slider-dots');
+  const prods=S.products.filter(p=>{const sv=S.sellers.find(s=>s.id===p.sid);return sv&&sv.status==='approved';});
+  if(!prods.length){
+    track.innerHTML=`<div class="slide" style="min-width:100%;height:320px;display:flex;align-items:center;justify-content:center;background:var(--dk2);border-radius:14px;"><p style="color:var(--gray)">Nenhum produto em destaque ainda.</p></div>`;
+    dots.innerHTML='';return;
+  }
+  const items=prods.slice(0,6);
+  track.innerHTML=items.map((p,i)=>{
+    const bg=p.photos&&p.photos.length?`<img class="slide-img" src="${p.photos[0]}">`:`<div class="slide-emoji-bg" style="background:var(--dk2)">${p.em||'📦'}</div>`;
+    return `<div class="slide" onclick="openDetail('${p.id}')">
+      ${bg}
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="slide-tag">${p.cat} · ${p.type}</div>
+        <div class="slide-title">${p.name}</div>
+        <div class="slide-price">${parseInt(p.price).toLocaleString()} MZN</div>
+        <div class="slide-seller">🏪 ${p.sname} · 📍 ${p.loc}</div>
+        <button class="btn btn-primary btn-sm" onclick="event.stopPropagation();contactWA('${p.id}')">💬 Contactar via WhatsApp</button>
+      </div>
+    </div>`;
+  }).join('');
+  dots.innerHTML=items.map((_,i)=>`<button class="sdot${i===0?' act':''}" onclick="goSlide(${i})"></button>`).join('');
+  sliderIdx=0;
+  if(sliderTimer)clearInterval(sliderTimer);
+  sliderTimer=setInterval(()=>slideNext(),4000);
+}
+
+function goSlide(i){
+  const items=S.products.filter(p=>{const sv=S.sellers.find(s=>s.id===p.sid);return sv&&sv.status==='approved';}).slice(0,6);
+  if(!items.length)return;
+  sliderIdx=((i%items.length)+items.length)%items.length;
+  document.getElementById('slider-track').style.transform=`translateX(-${sliderIdx*100}%)`;
+  document.querySelectorAll('.sdot').forEach((d,j)=>d.classList.toggle('act',j===sliderIdx));
+}
+function slideNext(){
+  const items=S.products.filter(p=>{const sv=S.sellers.find(s=>s.id===p.sid);return sv&&sv.status==='approved';}).slice(0,6);
+  goSlide((sliderIdx+1)%Math.max(items.length,1));
+}
+function slidePrev(){
+  const items=S.products.filter(p=>{const sv=S.sellers.find(s=>s.id===p.sid);return sv&&sv.status==='approved';}).slice(0,6);
+  goSlide((sliderIdx-1+items.length)%Math.max(items.length,1));
+}
+
+// ============================================================
+// UTILITIES
+// ============================================================
+function toast(m,err=false){const t=document.getElementById('toast');t.textContent=m;t.className='show'+(err?' err':'');setTimeout(()=>t.className='',3200);}
 function openModal(id){document.getElementById(id).classList.add('active');}
 function closeModal(id){document.getElementById(id).classList.remove('active');}
 function showPage(p){document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));document.getElementById('page-'+p).classList.add('active');window.scrollTo(0,0);}
 function scrollTo(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth'});}
 function uid(){return '_'+Math.random().toString(36).substr(2,9);}
 function now(){return new Date().toLocaleDateString('pt-MZ',{day:'2-digit',month:'2-digit',year:'numeric'});}
-function toggleNav(){const l=document.querySelector('.nav-links');l.style.display=l.style.display==='flex'?'':`flex`;if(l.style.display==='flex')l.style.cssText='display:flex;flex-direction:column;position:absolute;top:62px;left:0;right:0;background:var(--dk2);padding:18px 4%;gap:13px;border-bottom:1px solid var(--bdr);';}
+function toggleNav(){const l=document.querySelector('.nav-links');l.style.display=l.style.display==='flex'?'':`flex`;if(l.style.display==='flex')l.style.cssText='display:flex;flex-direction:column;position:absolute;top:62px;left:0;right:0;background:var(--dk2);padding:18px 4%;gap:13px;border-bottom:1px solid var(--bdr);z-index:999';}
 function prevFile(inp,imgId,nmId){if(inp.files&&inp.files[0]){const r=new FileReader();r.onload=e=>{const im=document.getElementById(imgId);im.src=e.target.result;im.style.display='block';};r.readAsDataURL(inp.files[0]);document.getElementById(nmId).textContent='✓ '+inp.files[0].name;}}
 function prevProds(inp){const g=document.getElementById('ap-prev'),n=document.getElementById('ap-pn');g.innerHTML='';if(!inp.files.length)return;n.textContent='✓ '+inp.files.length+' foto(s)';Array.from(inp.files).slice(0,3).forEach(f=>{const r=new FileReader();r.onload=e=>{g.innerHTML+=`<img src="${e.target.result}" style="width:100%;height:105px;object-fit:cover;border-radius:8px;border:1px solid var(--bdr)">`;};r.readAsDataURL(f);});}
 
+// ============================================================
 // AUTH
+// ============================================================
 function setAuthMode(m){document.getElementById('auth-login').classList.toggle('hidden',m!=='login');document.getElementById('auth-register').classList.toggle('hidden',m!=='register');document.querySelectorAll('#auth-tabs .mtab').forEach((t,i)=>t.classList.toggle('active',(i===0&&m==='login')||(i===1&&m==='register')));}
 function setRegType(t){document.getElementById('reg-client').classList.toggle('hidden',t!=='client');document.getElementById('reg-seller').classList.toggle('hidden',t!=='seller');document.getElementById('rtab-c').classList.toggle('active',t==='client');document.getElementById('rtab-s').classList.toggle('active',t==='seller');}
 
 function doLogin(){
   const id=document.getElementById('li-id').value.trim();
   const pass=document.getElementById('li-pass').value.trim();
-  if(id===ADMIN_ID&&pass===ADMIN_PASS){S.user={role:'admin',name:'Administrador'};closeModal('modal-auth');updateNav();showPage('admin');refreshAdmin();return;}
+  if(!id||!pass){toast('Preenche os campos de acesso.',true);return;}
+
+  // CEO
+  if((id===ACCOUNTS.ceo.id||id===ACCOUNTS.ceo.email)&&pass===ACCOUNTS.ceo.pass){
+    S.user={role:'ceo',name:ACCOUNTS.ceo.name};
+    closeModal('modal-auth');updateNav();showPage('admin');refreshAdmin();
+    toast('👑 Bem-vindo, CEO Karde Andrade!');return;
+  }
+
+  // Admins fixos
+  const fixedAdmin=ACCOUNTS.admins.find(a=>(a.id===id||a.email===id)&&a.pass===pass);
+  if(fixedAdmin){
+    S.user={role:'admin',name:fixedAdmin.name};
+    closeModal('modal-auth');updateNav();showPage('admin');refreshAdmin();
+    toast('🔑 Bem-vindo, '+fixedAdmin.name.split(' ')[0]+'!');return;
+  }
+
+  // Admins extra (criados pelo CEO)
+  const extraAdmin=S.extraAdmins.find(a=>(a.id===id||a.email===id)&&a.pass===pass);
+  if(extraAdmin){
+    S.user={role:'admin',name:extraAdmin.name};
+    closeModal('modal-auth');updateNav();showPage('admin');refreshAdmin();
+    toast('🔑 Bem-vindo, '+extraAdmin.name.split(' ')[0]+'!');return;
+  }
+
+  // Sellers
   const seller=S.sellers.find(s=>(s.phone===id||s.email===id)&&s.pass===pass);
   if(seller){S.user={role:'seller',id:seller.id,name:seller.name,status:seller.status};closeModal('modal-auth');updateNav();showPage('seller');refreshSellerDash();return;}
+
+  // Clients
   const client=S.clients.find(c=>(c.phone===id||c.name===id)&&c.pass===pass);
   if(client){S.user={role:'client',id:client.id,name:client.name};closeModal('modal-auth');updateNav();showPage('client');document.getElementById('cli-nm').textContent=client.name;return;}
+
   toast('Conta não encontrada ou senha incorrecta.',true);
 }
 
@@ -594,12 +851,15 @@ function updateNav(){
   const u=S.user,nr=document.getElementById('nav-right');
   if(!u){nr.innerHTML=`<button class="btn btn-outline btn-sm" onclick="openModal('modal-auth')">Entrar</button><button class="btn btn-primary btn-sm" onclick="openModal('modal-auth');setAuthMode('register')">Registar</button>`;return;}
   const ini=u.name.split(' ').map(x=>x[0]).join('').substring(0,2).toUpperCase();
-  const pg=u.role==='admin'?'admin':u.role==='seller'?'seller':'client';
-  const cb=u.role==='admin'?'refreshAdmin()':u.role==='seller'?'refreshSellerDash()':'';
-  nr.innerHTML=`<div class="nav-user" onclick="showPage('${pg}');${cb}"><div class="nav-avatar">${ini}</div><span>${u.name.split(' ')[0]}</span></div><button class="btn btn-outline btn-sm" onclick="logoutUser()">Sair</button>`;
+  const pg=(['ceo','admin'].includes(u.role))?'admin':u.role==='seller'?'seller':'client';
+  const cb=(['ceo','admin'].includes(u.role))?'refreshAdmin()':u.role==='seller'?'refreshSellerDash()':'';
+  const avClass=u.role==='ceo'?'nav-avatar ceo-av':u.role==='admin'?'nav-avatar admin-av':'nav-avatar';
+  nr.innerHTML=`<div class="nav-user" onclick="showPage('${pg}');${cb}"><div class="${avClass}">${ini}</div><span>${u.name.split(' ')[0]}</span></div><button class="btn btn-outline btn-sm" onclick="logoutUser()">Sair</button>`;
 }
 
+// ============================================================
 // PRODUCTS
+// ============================================================
 function renderProds(){
   const g=document.getElementById('prod-grid');
   const q=document.getElementById('s-input').value.toLowerCase();
@@ -664,14 +924,14 @@ function openDetail(id){
         </div>
       </div>
       <button class="btn btn-primary btn-full" onclick="contactWA('${p.id}');closeModal('modal-detail')">💬 Contactar via WhatsApp</button>
-      <p style="font-size:.73rem;color:var(--gray);text-align:center;margin-top:9px">Serás encaminhado para o WhatsApp da equipa MozNow</p>
+      <p style="font-size:.73rem;color:var(--gray);text-align:center;margin-top:9px">Serás encaminhado para o WhatsApp da equipa MozMarket</p>
     </div>`;
   openModal('modal-detail');
 }
 
 function contactWA(id){
   const p=S.products.find(x=>x.id===id);if(!p)return;
-  const msg=encodeURIComponent(`Olá MozNow! Tenho interesse no produto:\n\n*${p.name}*\nPreço: ${parseInt(p.price).toLocaleString()} MZN\nLocal: ${p.loc}\n\nPode ajudar-me?`);
+  const msg=encodeURIComponent(`Olá MozMarket! Tenho interesse no produto:\n\n*${p.name}*\nPreço: ${parseInt(p.price).toLocaleString()} MZN\nLocal: ${p.loc}\n\nPode ajudar-me?`);
   window.open(`https://wa.me/${WA}?text=${msg}`,'_blank');
 }
 
@@ -679,7 +939,7 @@ function contactWA(id){
 function addProduct(){
   if(!S.user||S.user.role!=='seller'){toast('Precisas de ser vendedor aprovado.',true);return;}
   const sv=S.sellers.find(s=>s.id===S.user.id);
-  if(!sv||sv.status!=='approved'){toast('A tua conta ainda não foi aprovada pelo administrador.',true);return;}
+  if(!sv||sv.status!=='approved'){toast('A tua conta ainda não foi aprovada.',true);return;}
   const name=document.getElementById('ap-name').value.trim();
   const price=document.getElementById('ap-price').value;
   const cat=document.getElementById('ap-cat').value;
@@ -706,7 +966,7 @@ function finishAddProd(name,price,cat,type,loc,desc,photos,em){
   ['ap-name','ap-price','ap-loc','ap-desc'].forEach(x=>document.getElementById(x).value='');
   document.getElementById('ap-prev').innerHTML='';document.getElementById('ap-pn').textContent='';
   toast('✓ Produto publicado com sucesso!');
-  renderProds();refreshSellerDash();refreshAdmin();
+  renderProds();refreshSellerDash();refreshAdmin();buildSlider();
 }
 
 // SELLER DASH
@@ -734,22 +994,42 @@ function refreshSellerDash(){
       </div>
     </div>`).join('');
 }
-function delMyProd(id){if(!confirm('Remover este produto?'))return;S.products=S.products.filter(p=>p.id!==id);toast('Produto removido.');refreshSellerDash();renderProds();}
+function delMyProd(id){if(!confirm('Remover este produto?'))return;S.products=S.products.filter(p=>p.id!==id);toast('Produto removido.');refreshSellerDash();renderProds();buildSlider();}
 
+// ============================================================
 // ADMIN
+// ============================================================
 function switchAdmin(sec,btn){
   document.querySelectorAll('.admin-sec').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.aside-btn').forEach(b=>b.classList.remove('act'));
   document.getElementById('asec-'+sec).classList.add('active');
-  if(btn)btn.classList.add('act');refreshAdmin();
+  if(btn)btn.classList.add('act');
+  refreshAdmin();
 }
+
 function updatePendBadge(){
   const n=S.sellers.filter(s=>s.status==='pending').length;
-  const b=document.getElementById('pend-badge');b.textContent=n;b.style.display=n>0?'':'none';
+  const b=document.getElementById('pend-badge');b.textContent=n;b.style.display=n>0?'inline':'none';
 }
+
 function addAct(msg){S.activity.push(new Date().toLocaleTimeString('pt-MZ',{hour:'2-digit',minute:'2-digit'})+' — '+msg);}
 
 function refreshAdmin(){
+  const u=S.user;if(!u||!(['ceo','admin'].includes(u.role)))return;
+  const isCEO=u.role==='ceo';
+
+  // Update sidebar
+  document.getElementById('sidebar-nm').textContent=u.name;
+  document.getElementById('sidebar-role-lbl').textContent=isCEO?'👑 CEO':'🔑 Administrador';
+  const av=document.getElementById('sidebar-av');
+  av.textContent=u.name.split(' ').map(x=>x[0]).join('').substring(0,2).toUpperCase();
+  av.style.background=isCEO?'var(--gold)':'#7c3aed';
+  av.style.color=isCEO?'var(--dk)':'#fff';
+
+  // CEO-only elements
+  document.querySelectorAll('.ceo-only').forEach(el=>el.style.display=isCEO?'flex':'none');
+  const ceoQ=document.getElementById('ceo-quick');if(ceoQ)ceoQ.classList.toggle('hidden',!isCEO);
+
   const approved=S.sellers.filter(s=>s.status==='approved');
   const pending=S.sellers.filter(s=>s.status==='pending');
   document.getElementById('as-cli').textContent=S.clients.length;
@@ -757,6 +1037,7 @@ function refreshAdmin(){
   document.getElementById('as-pend').textContent=pending.length;
   document.getElementById('as-prod').textContent=S.products.length;
   updatePendBadge();
+
   // Pending
   const pg=document.getElementById('pending-grid');
   pg.innerHTML=!pending.length?'<p style="color:var(--gray);font-size:.83rem">Nenhum pedido pendente.</p>':pending.map(s=>`
@@ -776,6 +1057,7 @@ function refreshAdmin(){
         <button class="btn btn-red btn-sm" onclick="rejectSeller('${s.id}')">✗ Rejeitar</button>
       </div>
     </div>`).join('');
+
   // Sellers table
   const st=document.getElementById('sellers-tb');
   st.innerHTML=!approved.length?`<tr><td colspan="6" style="color:var(--gray);text-align:center;padding:20px">Nenhum vendedor aprovado.</td></tr>`:approved.map(s=>{
@@ -784,8 +1066,12 @@ function refreshAdmin(){
       <td><div class="srow-info"><div class="srow-av">${s.biData?`<img src="${s.biData}">`:`${s.name[0]}`}</div><div><div style="font-weight:700">${s.name}</div><div style="font-size:.72rem;color:var(--gray)">${s.date}</div></div></div></td>
       <td>${s.email}</td><td>${s.phone}</td><td>📍 ${s.city}</td>
       <td><span class="badge badge-green">${pc} produtos</span></td>
-      <td><div class="td-acts"><button class="btn btn-red btn-sm" onclick="removeSeller('${s.id}')">Remover</button></div></td>
+      <td><div class="td-acts">
+        ${isCEO?`<button class="btn btn-gold btn-sm" onclick="promoteSeller('${s.id}')">⬆️ Admin</button>`:''}
+        <button class="btn btn-red btn-sm" onclick="removeSeller('${s.id}')">Remover</button>
+      </div></td>
     </tr>`;}).join('');
+
   // Products table
   const pt=document.getElementById('products-tb');
   pt.innerHTML=!S.products.length?`<tr><td colspan="7" style="color:var(--gray);text-align:center;padding:20px">Nenhum produto.</td></tr>`:S.products.map(p=>`
@@ -797,19 +1083,38 @@ function refreshAdmin(){
       <td>📍 ${p.loc}</td>
       <td><button class="btn btn-red btn-sm" onclick="adminDelProd('${p.id}')">Remover</button></td>
     </tr>`).join('');
+
   // Clients
   const ct=document.getElementById('clients-tb');
   ct.innerHTML=!S.clients.length?`<tr><td colspan="3" style="color:var(--gray);text-align:center;padding:20px">Nenhum cliente.</td></tr>`:S.clients.map(c=>`<tr><td><strong>${c.name}</strong></td><td>${c.phone}</td><td>${c.date}</td></tr>`).join('');
-  // Activity
-  const al=document.getElementById('activity-log');
-  al.innerHTML=!S.activity.length?'<p style="color:var(--gray);font-size:.83rem">Sem actividade.</p>':S.activity.slice(-10).reverse().map(a=>`<div style="padding:9px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.81rem;color:rgba(240,250,245,.72)">${a}</div>`).join('');
+
+  // Activity logs
+  const renderAct=(el,all)=>{
+    const items=all?S.activity:[...S.activity].slice(-5).reverse();
+    el.innerHTML=!S.activity.length?'<p style="color:var(--gray);font-size:.83rem">Sem actividade.</p>':items.reverse().map(a=>`<div style="padding:9px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.81rem;color:rgba(240,250,245,.72)">${a}</div>`).join('');
+  };
+  renderAct(document.getElementById('activity-log-dash'),false);
+  renderAct(document.getElementById('activity-log-full'),true);
+
+  // Admins list (CEO only)
+  if(isCEO){
+    const allAdmins=[...ACCOUNTS.admins,...S.extraAdmins];
+    const al=document.getElementById('admins-list');
+    al.innerHTML=!allAdmins.length?'<p style="color:var(--gray);font-size:.84rem">Nenhum administrador.</p>':allAdmins.map(a=>`
+      <div class="admin-row">
+        <div class="admin-row-av" style="background:#7c3aed;color:#fff">${a.name.split(' ').map(x=>x[0]).join('').substring(0,2).toUpperCase()}</div>
+        <div class="admin-row-info"><h5>${a.name}</h5><p>${a.email||'—'} · ${a.id}</p></div>
+        <span class="role-badge role-admin">Admin</span>
+        ${S.extraAdmins.find(x=>x.id===a.id)?`<button class="btn btn-red btn-sm" style="margin-left:8px" onclick="removeExtraAdmin('${a.id}')">Remover</button>`:''}
+      </div>`).join('');
+  }
 }
 
 function approveSeller(id){
   const s=S.sellers.find(x=>x.id===id);if(!s)return;
   s.status='approved';addAct('✅ Vendedor aprovado: '+s.name);
   if(S.user&&S.user.id===id)S.user.status='approved';
-  toast('✅ '+s.name+' aprovado!');refreshAdmin();renderProds();
+  toast('✅ '+s.name+' aprovado!');refreshAdmin();renderProds();buildSlider();
 }
 function rejectSeller(id){
   const s=S.sellers.find(x=>x.id===id);if(!s)return;
@@ -819,19 +1124,79 @@ function rejectSeller(id){
 function removeSeller(id){
   if(!confirm('Remover este vendedor e todos os seus produtos?'))return;
   S.sellers=S.sellers.filter(s=>s.id!==id);S.products=S.products.filter(p=>p.sid!==id);
-  toast('Vendedor removido.');refreshAdmin();renderProds();
+  toast('Vendedor removido.');refreshAdmin();renderProds();buildSlider();
 }
 function adminDelProd(id){
   if(!confirm('Remover produto?'))return;
-  S.products=S.products.filter(p=>p.id!==id);toast('Produto removido.');refreshAdmin();renderProds();
+  S.products=S.products.filter(p=>p.id!==id);toast('Produto removido.');refreshAdmin();renderProds();buildSlider();
 }
 
+// ============================================================
+// CEO: PROMOVER VENDEDOR A ADMINISTRADOR
+// ============================================================
+function openPromoteModal(){
+  const list=document.getElementById('promote-list');
+  const approved=S.sellers.filter(s=>s.status==='approved');
+  if(!approved.length){list.innerHTML='<p style="color:var(--gray)">Nenhum vendedor aprovado para promover.</p>';}
+  else{
+    list.innerHTML=approved.map(s=>`
+      <div style="display:flex;align-items:center;gap:10px;background:var(--dk3);border-radius:10px;padding:12px;">
+        <div class="admin-row-av" style="background:var(--g);color:var(--dk);width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;flex-shrink:0">${s.name[0]}</div>
+        <div style="flex:1"><div style="font-weight:700;font-size:.88rem">${s.name}</div><div style="font-size:.73rem;color:var(--gray)">${s.email} · ${s.city}</div></div>
+        <button class="btn btn-gold btn-sm" onclick="promoteSeller('${s.id}')">⬆️ Promover</button>
+      </div>`).join('');
+  }
+  openModal('modal-promote');
+}
+
+function promoteSeller(id){
+  if(S.user&&S.user.role!=='ceo'){toast('Apenas o CEO pode promover vendedores.',true);return;}
+  const s=S.sellers.find(x=>x.id===id);if(!s)return;
+  if(!confirm(`Promover "${s.name}" a Administrador?`))return;
+  // Create admin account from seller
+  const newAdmin={id:s.email||s.phone,pass:s.pass,name:s.name,email:s.email,phone:s.phone,role:'admin'};
+  if(!S.extraAdmins.find(a=>a.id===newAdmin.id)){
+    S.extraAdmins.push(newAdmin);
+    addAct('⬆️ Vendedor promovido a Admin: '+s.name+' (pelo CEO)');
+    toast('✅ '+s.name+' promovido a Administrador!');
+    closeModal('modal-promote');refreshAdmin();
+  } else {toast('Este utilizador já é administrador.',true);}
+}
+
+function addNewAdmin(){
+  if(S.user&&S.user.role!=='ceo'){toast('Apenas o CEO pode adicionar administradores.',true);return;}
+  const name=document.getElementById('na-name').value.trim();
+  const email=document.getElementById('na-email').value.trim();
+  const phone=document.getElementById('na-phone').value.trim();
+  const pass=document.getElementById('na-pass').value.trim();
+  if(!name||!email||!pass){toast('Preenche todos os campos obrigatórios.',true);return;}
+  const id=email||phone;
+  if(S.extraAdmins.find(a=>a.id===id)){toast('Já existe um admin com este email.',true);return;}
+  S.extraAdmins.push({id,pass,name,email,phone,role:'admin'});
+  addAct('➕ Novo admin criado: '+name+' (pelo CEO)');
+  ['na-name','na-email','na-phone','na-pass'].forEach(x=>document.getElementById(x).value='');
+  closeModal('modal-addadmin');refreshAdmin();
+  toast('✅ Administrador '+name+' criado com sucesso!');
+}
+
+function removeExtraAdmin(id){
+  if(!confirm('Remover este administrador?'))return;
+  S.extraAdmins=S.extraAdmins.filter(a=>a.id!==id);
+  addAct('🗑️ Admin removido pelo CEO');
+  toast('Administrador removido.');refreshAdmin();
+}
+
+// ============================================================
+// HERO STATS
+// ============================================================
 function updateHeroStats(){
-  document.getElementById('hs-s').innerHTML=S.sellers.filter(s=>s.status==='approved').length+' <span>activos</span>';
-  document.getElementById('hs-p').innerHTML=S.products.length+' <span>produtos</span>';
+  const hs=document.getElementById('hs-s'),hp=document.getElementById('hs-p');
+  if(hs)hs.innerHTML=S.sellers.filter(s=>s.status==='approved').length+' <span>activos</span>';
+  if(hp)hp.innerHTML=S.products.length+' <span>produtos</span>';
 }
 
-renderProds();updateHeroStats();updatePendBadge();
+// INIT
+renderProds();buildSlider();updateHeroStats();
 </script>
 </body>
 </html>
