@@ -5190,10 +5190,12 @@
                         <div style="border-top:1px solid rgba(255,184,0,.15);padding-top:16px;margin-top:6px">
                             <div style="display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:8px">
                                 <span style="color:var(--gray)">Produto de 12.000 MZN</span><span
-                                    style="color:var(--gold);font-weight:700">+ 600 MZN</span></div>
+                                    style="color:var(--gold);font-weight:700">+ 600 MZN</span>
+                            </div>
                             <div style="display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:8px">
                                 <span style="color:var(--gray)">Produto de 45.000 MZN</span><span
-                                    style="color:var(--gold);font-weight:700">+ 2.250 MZN</span></div>
+                                    style="color:var(--gold);font-weight:700">+ 2.250 MZN</span>
+                            </div>
                             <div style="display:flex;justify-content:space-between;font-size:.8rem"><span
                                     style="color:var(--gray)">Produto de 68.000 MZN</span><span
                                     style="color:var(--gold);font-weight:700">+ 3.400 MZN</span></div>
@@ -5969,7 +5971,7 @@
                     </div>
                     <div style="font-size:.76rem;color:var(--gray);margin-bottom:6px">Link completo para partilhar:
                     </div>
-                    <div class="aff-link-box" id="aff-link-display">mozmarket.co.mz/?ref=AFF-XXXX</div>
+                    <div class="aff-link-box" id="aff-link-display">https://khardenny.github.io/Mozmarketnow//?ref=AFF-XXXX</div>
                     <div style="display:flex;gap:8px;flex-wrap:wrap">
                         <button class="btn btn-primary btn-sm" onclick="copyAffLink()">🔗 Copiar Link</button>
                         <button class="btn btn-outline btn-sm" onclick="shareWA()">💬 Partilhar no WhatsApp</button>
@@ -6453,10 +6455,10 @@
             managers: [], // [{id, pass, name, email, role:'aff_manager'|'prod_manager', date}]
             // Gerentes fixos (promovidos pelo CEO)
             managers: [
-                { id: 'antonio.mare', pass: 'Gerent@Mare2026', name: 'Antonio Fernando Mare', role: 'aff_manager', email: 'antonio@mozmarket.co.mz', date: '01/01/2026' },
+                { id: 'antonio.mare', pass: 'Gerent@mare2026', name: 'Antonio Fernando Mare', role: 'aff_manager', email: 'antonio@mozmarket.co.mz', date: '01/01/2026' },
                 { id: 'joaquim.augusto', pass: 'Gerent@Joaquim2026', name: 'Joaquim Augusto', role: 'prod_manager', email: 'joaquim@mozmarket.co.mz', date: '01/01/2026' },
             ],
-            admins: [
+            admins: [             
                 { id: 'gregorio.andrade', pass: 'Admin@greg2026', name: 'Gregorio Andrade', role: 'admin', email: 'gregorioandrade@gmai.com' },
                 { id: 'octavio.andrade', pass: 'Admin@octavio2026', name: 'Octavio Andrade', role: 'admin', email: 'octaviochuanga@gamil.com' },
                 { id: 'nelson.andrade', pass: 'Admn@nelson2026', name: 'Nelson Andrade', role: 'admin', email: 'nelsonandrade87@gmail.com' },
@@ -8184,9 +8186,9 @@
         // ============================================================
         // AI CHAT (MozBot)
         // ============================================================
-        let _aiOpen = false;
+        let _aiOpen = true;
         let _aiHistory = [];
-        const _aiSysPrompt = `Chamas-te Steffy, a assistente de IA da MozMarket — marketplace moçambicano de dropshipping.
+        const _aiSysPrompt = `Chamas-te MozBot, a assistente de IA da MozMarket — marketplace moçambicano de dropshipping.
 Responde sempre em Português (pt-MZ). Sê simpático, directo e útil.
 Conheces o seguinte sobre a MozMarket:
 - Marketplace moçambicano de produtos físicos e digitais
@@ -8208,7 +8210,7 @@ Quando o utilizador quiser comprar, diz-lhe para ir ao WhatsApp. Quando quiser s
             if (_aiOpen) {
                 notif.style.display = 'none';
                 if (_aiHistory.length === 0) {
-                    setTimeout(() => addAIMsg('bot', 'Olá! 👋 Sou a **Steffy**, assistente do MozMarket.\n\nPosso ajudar-te com compras, vendas, programa de afiliados ou qualquer dúvida sobre a plataforma. Como posso ajudar?'), 300);
+                    setTimeout(() => addAIMsg('bot', 'Olá! 👋 Sou  **MozBot**, assistente da MozMarket.\n\nPosso ajudar-te com compras, vendas, programa de afiliados ou qualquer dúvida sobre a plataforma. Como posso ajudar?'), 300);
                 }
                 setTimeout(() => { const inp = document.getElementById('ai-input'); if (inp) inp.focus(); }, 350);
             }
